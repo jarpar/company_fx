@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="600.0" style="-fx-background-color: #eff0f1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="MAGAZYN">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Separator prefWidth="200.0" />
+      <TableView fx:id="tbl_products" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="tc_name" prefWidth="300.0" text="NAZWA" />
+            <TableColumn fx:id="tc_category" prefWidth="100.0" text="KATEGORIA" />
+          <TableColumn fx:id="tc_price" prefWidth="100.0" text="CENA" />
+            <TableColumn fx:id="tc_quantity" prefWidth="100.0" text="ILOŚĆ" />
+        </columns>
+      </TableView>
+      <Label text="FILTROWANIE:" />
+      <TextField fx:id="tf_search" promptText="Wyszukaj produkt">
+         <VBox.margin>
+            <Insets bottom="5.0" left="100.0" right="100.0" top="5.0" />
+         </VBox.margin>
+      </TextField>
+      <HBox maxHeight="18.0" minHeight="18.0" prefHeight="18.0" prefWidth="200.0">
+         <children>
+            <CheckBox fx:id="cb_less5" mnemonicParsing="false" prefHeight="18.0" prefWidth="769.0" text="Ilość &lt; 5 szt">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" />
+               </HBox.margin>
+            </CheckBox>
+            <CheckBox fx:id="cb_medium" maxHeight="18.0" minHeight="18.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="769.0" text="Ilość &lt;5,10&gt;">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" />
+               </HBox.margin>
+            </CheckBox>
+            <CheckBox fx:id="cb_more10" mnemonicParsing="false" prefHeight="18.0" prefWidth="769.0" text="Ilość  &gt;10">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" />
+               </HBox.margin>
+            </CheckBox>
+         </children>
+      </HBox>
+      <ComboBox fx:id="combo_category" prefHeight="28.0" prefWidth="757.0" promptText="Wybierz kategorię">
+         <VBox.margin>
+            <Insets bottom="5.0" left="200.0" right="200.0" top="5.0" />
+         </VBox.margin>
+      </ComboBox>
+      <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="701.0" style="-fx-background-color: #0055ff;" text="Filtruj" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="5.0" left="220.0" right="220.0" top="5.0" />
+         </VBox.margin>
+      </Button>
+      <HBox prefHeight="26.0" prefWidth="200.0">
+         <children>
+            <Button disable="true" mnemonicParsing="false" prefHeight="28.0" prefWidth="783.0" style="-fx-background-color: green;" text="Dodaj produkt" textFill="WHITE">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="btn_update" disable="true" mnemonicParsing="false" prefHeight="28.0" prefWidth="783.0" style="-fx-background-color: yellow;" text="Edytuj produkt">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="btn_delete" disable="true" mnemonicParsing="false" prefHeight="28.0" prefWidth="783.0" style="-fx-background-color: red;" text="Usuń produkt" textFill="WHITE">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</VBox>
