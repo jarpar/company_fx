@@ -5,6 +5,9 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -14,15 +17,25 @@
 <?import javafx.scene.text.Font?>
 
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="600.0" style="-fx-background-color: #eff0f1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="600.0" style="-fx-background-color: #eff0f1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CompanyController">
    <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="Wyjście">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#logoutAction" text="Wyloguj" />
+                  <MenuItem mnemonicParsing="false" onAction="#closeAction" text="Zamknij" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
       <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="MAGAZYN">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
       <Separator prefWidth="200.0" />
-      <TableView fx:id="tbl_products" prefHeight="200.0" prefWidth="200.0">
+      <TableView fx:id="tbl_products" onMouseClicked="#selectAction" prefHeight="200.0" prefWidth="200.0">
         <columns>
           <TableColumn fx:id="tc_name" prefWidth="300.0" text="NAZWA" />
             <TableColumn fx:id="tc_category" prefWidth="100.0" text="KATEGORIA" />
@@ -60,7 +73,7 @@
             <Insets bottom="5.0" left="200.0" right="200.0" top="5.0" />
          </VBox.margin>
       </ComboBox>
-      <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="701.0" style="-fx-background-color: #0055ff;" text="Filtruj" textFill="WHITE">
+      <Button mnemonicParsing="false" onAction="#filterAction" prefHeight="28.0" prefWidth="701.0" style="-fx-background-color: #0055ff;" text="Filtruj" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -70,17 +83,17 @@
       </Button>
       <HBox prefHeight="26.0" prefWidth="200.0">
          <children>
-            <Button disable="true" mnemonicParsing="false" prefHeight="28.0" prefWidth="783.0" style="-fx-background-color: green;" text="Dodaj produkt" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#addAction" prefHeight="28.0" prefWidth="783.0" style="-fx-background-color: green;" text="Dodaj produkt" textFill="WHITE">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="btn_update" disable="true" mnemonicParsing="false" prefHeight="28.0" prefWidth="783.0" style="-fx-background-color: yellow;" text="Edytuj produkt">
+            <Button fx:id="btn_update" disable="true" mnemonicParsing="false" onAction="#updateAction" prefHeight="28.0" prefWidth="783.0" style="-fx-background-color: yellow;" text="Edytuj produkt">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="btn_delete" disable="true" mnemonicParsing="false" prefHeight="28.0" prefWidth="783.0" style="-fx-background-color: red;" text="Usuń produkt" textFill="WHITE">
+            <Button fx:id="btn_delete" disable="true" mnemonicParsing="false" onAction="#deleteAction" prefHeight="28.0" prefWidth="783.0" style="-fx-background-color: red;" text="Usuń produkt" textFill="WHITE">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
