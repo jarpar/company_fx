@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,8 +19,12 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Product;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Observable;
+import java.util.Scanner;
 
 public class CompanyController {
     @FXML
@@ -65,7 +70,15 @@ public class CompanyController {
         Platform.exit();
     }
 
-    private ObservableList<Product> getProductsFromFile() {
+    private ObservableList<Product> getProductsFromFile() throws FileNotFoundException {
+        ObservableList<Product> products = FXCollections.observableArrayList();
+        String path = Paths.get("").toAbsolutePath().toString() +
+                "src/main/java/utility/products.csv";
+        Scanner scanner = new Scanner(new File(path));
+        scanner.nextLine();
+        while ((scanner.hasNextLine())) {
+
+        }
         return null;
     }
 
