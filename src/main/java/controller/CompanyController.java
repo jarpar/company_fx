@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.Category;
 import model.Product;
 
 import java.io.File;
@@ -70,16 +71,21 @@ public class CompanyController {
         Platform.exit();
     }
 
-    private ObservableList<Product> getProductsFromFile() throws FileNotFoundException {
-        ObservableList<Product> products = FXCollections.observableArrayList();
+    private ObservableList<Product> products = FXCollections.observableArrayList();
+
+    private void getProductsFromFile() throws FileNotFoundException {
         String path = Paths.get("").toAbsolutePath().toString() +
                 "src/main/java/utility/products.csv";
         Scanner scanner = new Scanner(new File(path));
         scanner.nextLine();
         while ((scanner.hasNextLine())) {
-
+            String line[] = scanner.nextLine().split(";");
+            products.add(new Product(
+                    Integer.valueOf(line[0]), line[1],
+                    Category.valueOf(line[2]),
+                    Double.valueOf(line[3]),
+                    Integer.valueOf(line[4])));
         }
-        return null;
     }
 
     private void setProductsIntoTable() {
