@@ -17,17 +17,17 @@
 <?import javafx.scene.text.Font?>
 
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="600.0" style="-fx-background-color: #eff0f1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CompanyController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" spacing="10.0" style="-fx-background-color: aqua;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CompanyController">
    <children>
       <MenuBar>
-        <menus>
-          <Menu mnemonicParsing="false" text="Wyjście">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#logoutAction" text="Wyloguj" />
-                  <MenuItem mnemonicParsing="false" onAction="#closeAction" text="Zamknij" />
-            </items>
-          </Menu>
-        </menus>
+         <menus>
+            <Menu mnemonicParsing="false" text="Wyjście">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#logoutAction" text="wyloguj" />
+                  <MenuItem mnemonicParsing="false" onAction="#closeAction" text="zamknij" />
+               </items>
+            </Menu>
+         </menus>
       </MenuBar>
       <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="MAGAZYN">
          <font>
@@ -35,70 +35,85 @@
          </font>
       </Label>
       <Separator prefWidth="200.0" />
-      <TableView fx:id="tbl_products" onMouseClicked="#selectAction" prefHeight="200.0" prefWidth="200.0">
-        <columns>
-          <TableColumn fx:id="tc_name" prefWidth="300.0" text="NAZWA" />
-            <TableColumn fx:id="tc_category" prefWidth="100.0" text="KATEGORIA" />
-          <TableColumn fx:id="tc_price" prefWidth="100.0" text="CENA" />
-            <TableColumn fx:id="tc_quantity" prefWidth="100.0" text="ILOŚĆ" />
-        </columns>
+      <TableView fx:id="tbl_products" onMouseClicked="#selectAction" prefHeight="230.0" prefWidth="600.0">
+         <columns>
+            <TableColumn fx:id="tc_name" minWidth="300.0" prefWidth="75.0" text="NAZWA" />
+            <TableColumn fx:id="tc_category" minWidth="100.0" prefWidth="75.0" text="KATEGORIA" />
+            <TableColumn fx:id="tc_price" minWidth="100.0" prefWidth="75.0" text="CENA" />
+            <TableColumn fx:id="tc_quantity" minWidth="100.0" prefWidth="75.0" text="ILOŚĆ" />
+         </columns>
       </TableView>
-      <Label text="FILTROWANIE:" />
-      <TextField fx:id="tf_search" promptText="Wyszukaj produkt">
-         <VBox.margin>
-            <Insets bottom="5.0" left="100.0" right="100.0" top="5.0" />
-         </VBox.margin>
-      </TextField>
-      <HBox maxHeight="18.0" minHeight="18.0" prefHeight="18.0" prefWidth="200.0">
-         <children>
-            <CheckBox fx:id="cb_less5" mnemonicParsing="false" prefHeight="18.0" prefWidth="769.0" text="Ilość &lt; 5 szt">
-               <HBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" />
-               </HBox.margin>
-            </CheckBox>
-            <CheckBox fx:id="cb_medium" maxHeight="18.0" minHeight="18.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="769.0" text="Ilość &lt;5,10&gt;">
-               <HBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" />
-               </HBox.margin>
-            </CheckBox>
-            <CheckBox fx:id="cb_more10" mnemonicParsing="false" prefHeight="18.0" prefWidth="769.0" text="Ilość  &gt;10">
-               <HBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" />
-               </HBox.margin>
-            </CheckBox>
-         </children>
-      </HBox>
-      <ComboBox fx:id="combo_category" prefHeight="28.0" prefWidth="757.0" promptText="Wybierz kategorię">
-         <VBox.margin>
-            <Insets bottom="5.0" left="200.0" right="200.0" top="5.0" />
-         </VBox.margin>
-      </ComboBox>
-      <Button mnemonicParsing="false" onAction="#filterAction" prefHeight="28.0" prefWidth="701.0" style="-fx-background-color: #0055ff;" text="Filtruj" textFill="WHITE">
+      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="FILTROWANIE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
+      </Label>
+      <TextField fx:id="tf_search" promptText="wyszukaj produkt">
          <VBox.margin>
-            <Insets bottom="5.0" left="220.0" right="220.0" top="5.0" />
+            <Insets left="150.0" right="150.0" />
+         </VBox.margin>
+      </TextField>
+      <HBox prefHeight="18.0" prefWidth="600.0">
+         <children>
+            <CheckBox fx:id="cb_less5" mnemonicParsing="false" prefHeight="18.0" prefWidth="622.0" text="ilość &lt; 5 szt">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="cb_medium" mnemonicParsing="false" prefHeight="18.0" prefWidth="622.0" text="ilość &lt;5,10&gt;">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="cb_more10" mnemonicParsing="false" prefHeight="18.0" prefWidth="622.0" text="ilość &gt; 10">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </CheckBox>
+         </children>
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" />
+         </VBox.margin>
+      </HBox>
+      <ComboBox fx:id="combo_category" prefHeight="26.0" prefWidth="646.0" promptText="wybierz kategorię">
+         <VBox.margin>
+            <Insets left="150.0" right="150.0" />
+         </VBox.margin>
+      </ComboBox>
+      <Button mnemonicParsing="false" onAction="#filterAction" prefHeight="26.0" prefWidth="793.0" style="-fx-background-color: blue;" text="filtruj" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <VBox.margin>
+            <Insets left="200.0" right="200.0" />
          </VBox.margin>
       </Button>
+      <Label alignment="CENTER" layoutX="10.0" layoutY="248.0" maxWidth="1.7976931348623157E308" text="EDYCJA">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
       <HBox prefHeight="26.0" prefWidth="200.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#addAction" prefHeight="28.0" prefWidth="783.0" style="-fx-background-color: green;" text="Dodaj produkt" textFill="WHITE">
-               <HBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </HBox.margin>
+            <Button mnemonicParsing="false" onAction="#addAction" prefHeight="26.0" prefWidth="630.0" style="-fx-background-color: green;" text="dodaj produkt" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
             </Button>
-            <Button fx:id="btn_update" disable="true" mnemonicParsing="false" onAction="#updateAction" prefHeight="28.0" prefWidth="783.0" style="-fx-background-color: yellow;" text="Edytuj produkt">
-               <HBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </HBox.margin>
+            <Button fx:id="btn_update" disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#updateAction" prefHeight="26.0" prefWidth="630.0" style="-fx-background-color: yellow;" text="edytuj produkt">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
             </Button>
-            <Button fx:id="btn_delete" disable="true" mnemonicParsing="false" onAction="#deleteAction" prefHeight="28.0" prefWidth="783.0" style="-fx-background-color: red;" text="Usuń produkt" textFill="WHITE">
-               <HBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </HBox.margin>
+            <Button fx:id="btn_delete" disable="true" layoutX="310.0" layoutY="10.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="26.0" prefWidth="630.0" style="-fx-background-color: red;" text="usuń produkt" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
             </Button>
          </children>
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" />
+         </VBox.margin>
       </HBox>
    </children>
 </VBox>
