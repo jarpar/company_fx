@@ -4,9 +4,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 public class LoginController {
+    private void login(){
+        System.out.println("test");
+    }
 
     @FXML
     private TextField tfLogin;
@@ -22,7 +26,8 @@ public class LoginController {
 
     @FXML
     void keyLoginAction(KeyEvent event) {
-
+        if (event.getCode() == KeyCode.ENTER) {
+            login();
+        }
     }
-
 }
