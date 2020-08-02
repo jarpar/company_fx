@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class CompanyController {
@@ -132,8 +133,22 @@ public class CompanyController {
         dialog.getDialogPane().setContent(grid);
 
         ButtonType btn_ok = new ButtonType("Dodaj", ButtonBar.ButtonData.OK_DONE);
-        dialog.getDialogPane().getButtonTypes().addAll(btn_ok, ButtonType.CANCEL);
-        dialog.showAndWait();
+        dialog.getDialogPane().getButtonTypes().addAll(btn_ok);
+        Optional<Product> productOpt = dialog.showAndWait();
+        if (productOpt.isPresent()) {
+            if (!tf_productPrice.getText().matches("[0-9]+\\.[0-9]{0,2}") ||
+                    !tf_productQuantity.getText().matches("[0-9]+")) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Błąd danych");
+                alert.setHeaderText("Błąd danych. Produkt nie został dodany!");
+                alert.showAndWait();
+            } else {
+                products.add(new Product(products.stream().mapToInt(p -> p.getId()).max().getAsInt() + 1,
+                        tf_productName.getText(), combo_productCategory.getValue(),
+                        Double.valueOf(tf_productPrice.getText()), Integer.valueOf(tf_productQuantity.getText())));
+            }
+        }
+
     }
 
     @FXML
