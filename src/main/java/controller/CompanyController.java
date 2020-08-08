@@ -151,6 +151,7 @@ public class CompanyController {
                         tf_productName.getText(), combo_productCategory.getValue(),
                         Double.valueOf(tf_productPrice.getText()), Integer.valueOf(tf_productQuantity.getText())));
                 saveToFile();
+                setProductsIntoTable();
             }
         }
     }
@@ -211,15 +212,18 @@ public class CompanyController {
                     .filter(product -> product.getQuantity() > 10)
                     .collect(Collectors.toList())));
         }
-        ObservableList<Product> finalFilter = FXCollections.observableArrayList();
 
+        ObservableList<Product> finalFilter = FXCollections.observableArrayList();
         for (Product p1 : productsToFilter) {
             for (Product p2 : filteredProducts) {
-                finalFilter.add(p1);
+                if (p1.equals(p2)) {
+                    finalFilter.add(p1);
+                }
             }
         }
 
-        tbl_products.setItems(filteredProducts);
+        tbl_products.setItems(finalFilter);
+
         // cyszczenie pól do domyślnych
         tf_search.clear();
         combo_category.setValue(null);
