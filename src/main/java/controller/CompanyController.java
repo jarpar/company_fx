@@ -211,6 +211,13 @@ public class CompanyController {
                     .filter(product -> product.getQuantity() > 10)
                     .collect(Collectors.toList())));
         }
+        ObservableList<Product> finalFilter = FXCollections.observableArrayList();
+
+        for (Product p1 : productsToFilter) {
+            for (Product p2 : filteredProducts) {
+                finalFilter.add(p1);
+            }
+        }
 
         tbl_products.setItems(filteredProducts);
         // cyszczenie pól do domyślnych
