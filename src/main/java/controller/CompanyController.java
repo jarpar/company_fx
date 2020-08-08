@@ -14,13 +14,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import model.Category;
 import model.Product;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Locale;
@@ -28,6 +25,9 @@ import java.util.Optional;
 import java.util.Scanner;
 
 public class CompanyController {
+    private String path = Paths.get("").toAbsolutePath().toString() +
+            "/src/main/java/utility/products.csv";
+
     @FXML
     private TableView<Product> tbl_products;
     @FXML
@@ -74,8 +74,6 @@ public class CompanyController {
     private ObservableList<Product> products = FXCollections.observableArrayList();
 
     private void getProductsFromFile() throws FileNotFoundException {
-        String path = Paths.get("").toAbsolutePath().toString() +
-                "/src/main/java/utility/products.csv";
         Scanner scanner = new Scanner(new File(path));
         scanner.nextLine(); // pominięcie nagłówka w pliku .csv
         while (scanner.hasNextLine()) {
@@ -86,7 +84,7 @@ public class CompanyController {
                             .filter(category -> category.getCategoryName().equals(line[2])) // filtrowanie po nazwie kategorii
                             .findAny()                                                      // Optional<Category>
                             .get(),                                                          // Category
-                    Double.valueOf(line[3]), Integer.valueOf(line[4])));
+                    Double.valueOf(line[3].replace(",", ".")), Integer.valueOf(line[4])));
         }
     }
 
@@ -106,11 +104,11 @@ public class CompanyController {
     }
 
     @FXML
-    void addAction(ActionEvent event) {
+    void addAction(ActionEvent event) throws IOException {
         Dialog<Product> dialog = new Dialog<>();
         dialog.setTitle("Dodaj produkt");
         dialog.setHeaderText("Dodaj produkt");
-
+        // ustawienie kontrolek
         GridPane grid = new GridPane();
         grid.setHgap(10);
         grid.setVgap(10);
@@ -130,13 +128,15 @@ public class CompanyController {
         grid.add(combo_productCategory, 0, 1);
         grid.add(tf_productPrice, 0, 2);
         grid.add(tf_productQuantity, 0, 3);
-        dialog.getDialogPane().setContent(grid);
 
+        dialog.getDialogPane().setContent(grid);
+        // przyciski
         ButtonType btn_ok = new ButtonType("Dodaj", ButtonBar.ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().addAll(btn_ok);
+
         Optional<Product> productOpt = dialog.showAndWait();
         if (productOpt.isPresent()) {
-            if (!tf_productPrice.getText().matches("[0-9]+\\.[0-9]{0,2}") ||
+            if (!tf_productPrice.getText().matches("[0-9]+\\.{0,1}[0-9]{0,2}") ||
                     !tf_productQuantity.getText().matches("[0-9]+")) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Błąd danych");
@@ -146,21 +146,54 @@ public class CompanyController {
                 products.add(new Product(products.stream().mapToInt(p -> p.getId()).max().getAsInt() + 1,
                         tf_productName.getText(), combo_productCategory.getValue(),
                         Double.valueOf(tf_productPrice.getText()), Integer.valueOf(tf_productQuantity.getText())));
+                saveToFile();
             }
         }
+    }
 
+    public void saveToFile() throws IOException {
+        PrintWriter pw = new PrintWriter(new File(path), "UTF-8");
+        pw.println("id;nazwa;kategoria;cena;lość");
+        for (Product product : products) {
+            pw.println(
+                    String.format(
+                            Locale.US,
+                            "%d;%s;%s;%s;%d",
+                            product.getId(),
+                            product.getName(),
+                            product.getCategory().getCategoryName(),
+                            String.format("%.2f", product.getPrice()).replace(".", ","),
+                            product.getQuantity()
+                    ));
+        }
+        pw.close();
     }
 
     @FXML
-    void deleteAction(ActionEvent event) {
+    void deleteAction(ActionEvent event) throws IOException {
+        Product product = tbl_products.getSelectionModel().getSelectedItem();
+        if (product != null) {
+            products.remove(product);
+            saveToFile();
+            setProductsIntoTable();
+        }
     }
 
     @FXML
     void filterAction(ActionEvent event) {
+
     }
 
     @FXML
     void selectAction(MouseEvent event) {
+        Product product = tbl_products.getSelectionModel().getSelectedItem(); // Odwołanie do obiektu zanznaczonego w tabeli
+        if (product != null) {
+            btn_delete.setDisable(false);
+            btn_update.setDisable(false);
+        } else {
+            btn_delete.setDisable(true);
+            btn_update.setDisable(true);
+        }
     }
 
     @FXML

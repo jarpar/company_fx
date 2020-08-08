@@ -23,7 +23,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="ref">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CompanyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CompanyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utility/products.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utility/products.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,14 +139,14 @@
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\PROXIMO\Desktop\TARR5\company\src\main\resources\view" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\PROXIMO\Desktop\TARR5\company\src\main\resources\img" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\PROXIMO\Desktop\TARR5\company\src\main\resources\view" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
@@ -364,7 +367,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596371056003</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="ref">
+      <created>1596372516604</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1596372516604</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -405,39 +415,43 @@
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state x="496" y="85" key="#com.intellij.ide.util.MemberChooser/0.0.1366.732@0.0.1366.732" timestamp="1596364248167" />
-    <state x="277" y="0" width="801" height="731" key="CommitChangelistDialog2" timestamp="1596371055944">
+    <state x="277" y="0" width="801" height="731" key="CommitChangelistDialog2" timestamp="1596372516503">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
-    <state x="277" y="0" width="801" height="731" key="CommitChangelistDialog2/0.0.1366.732@0.0.1366.732" timestamp="1596371055944" />
+    <state x="277" y="0" width="801" height="731" key="CommitChangelistDialog2/0.0.1366.732@0.0.1366.732" timestamp="1596372516503" />
     <state x="471" y="124" key="FileChooserDialogImpl" timestamp="1595265761989">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state x="471" y="124" key="FileChooserDialogImpl/0.0.1366.732@0.0.1366.732" timestamp="1595265761989" />
-    <state width="1320" height="172" key="GridCell.Tab.0.bottom" timestamp="1596371022947">
+    <state width="1320" height="171" key="GridCell.Tab.0.bottom" timestamp="1596873076327">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
-    <state width="1320" height="172" key="GridCell.Tab.0.bottom/0.0.1366.732@0.0.1366.732" timestamp="1596371022947" />
-    <state width="1320" height="172" key="GridCell.Tab.0.center" timestamp="1596371022946">
+    <state width="1320" height="171" key="GridCell.Tab.0.bottom/0.0.1366.732@0.0.1366.732" timestamp="1596873076327" />
+    <state width="1320" height="171" key="GridCell.Tab.0.center" timestamp="1596873076326">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
-    <state width="1320" height="172" key="GridCell.Tab.0.center/0.0.1366.732@0.0.1366.732" timestamp="1596371022946" />
-    <state width="1320" height="172" key="GridCell.Tab.0.left" timestamp="1596371022946">
+    <state width="1320" height="171" key="GridCell.Tab.0.center/0.0.1366.732@0.0.1366.732" timestamp="1596873076326" />
+    <state width="1320" height="171" key="GridCell.Tab.0.left" timestamp="1596873076325">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
-    <state width="1320" height="172" key="GridCell.Tab.0.left/0.0.1366.732@0.0.1366.732" timestamp="1596371022946" />
-    <state width="1320" height="172" key="GridCell.Tab.0.right" timestamp="1596371022947">
+    <state width="1320" height="171" key="GridCell.Tab.0.left/0.0.1366.732@0.0.1366.732" timestamp="1596873076325" />
+    <state width="1320" height="171" key="GridCell.Tab.0.right" timestamp="1596873076326">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
-    <state width="1320" height="172" key="GridCell.Tab.0.right/0.0.1366.732@0.0.1366.732" timestamp="1596371022947" />
+    <state width="1320" height="171" key="GridCell.Tab.0.right/0.0.1366.732@0.0.1366.732" timestamp="1596873076326" />
     <state x="171" y="0" key="SettingsEditor" timestamp="1596362968829">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state x="171" y="0" key="SettingsEditor/0.0.1366.732@0.0.1366.732" timestamp="1596362968829" />
-    <state x="342" y="141" width="800" height="527" key="Vcs.Push.Dialog.v2" timestamp="1596371056717">
+    <state x="342" y="141" width="800" height="527" key="Vcs.Push.Dialog.v2" timestamp="1596372517377">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
-    <state x="342" y="141" width="800" height="527" key="Vcs.Push.Dialog.v2/0.0.1366.732@0.0.1366.732" timestamp="1596371056717" />
+    <state x="342" y="141" width="800" height="527" key="Vcs.Push.Dialog.v2/0.0.1366.732@0.0.1366.732" timestamp="1596372517377" />
     <state x="400" y="166" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1595264307445" />
+    <state x="100" y="100" width="1166" height="532" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1596871802212">
+      <screen x="0" y="0" width="1366" height="732" />
+    </state>
+    <state x="100" y="100" width="1166" height="532" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1366.732@0.0.1366.732" timestamp="1596871802212" />
     <state x="348" y="51" key="com.intellij.javaee.MapExternalResourceDialog" timestamp="1596363359752">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
