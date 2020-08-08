@@ -195,6 +195,12 @@ public class CompanyController {
                     .collect(Collectors.toList()));
         }
         tbl_products.setItems(filteredProducts);
+        // cyszczenie pól do domyślnych
+        tf_search.clear();
+        combo_category.setValue(null);
+        cb_less5.setSelected(true);
+        cb_medium.setSelected(true);
+        cb_more10.setSelected(true);
     }
 
     @FXML
