@@ -47,7 +47,7 @@ public class CompanyController {
     @FXML
     private CheckBox cb_more10;
     @FXML
-    private ComboBox<?> combo_category;
+    private ComboBox<Category> combo_category;
     @FXML
     private Button btn_update;
     @FXML
@@ -101,6 +101,9 @@ public class CompanyController {
     public void initialize() throws FileNotFoundException {
         getProductsFromFile();
         setProductsIntoTable();
+        // wprowadzeie kategori do comboBox
+        combo_category.setItems(FXCollections.observableArrayList(Category.values()));
+
     }
 
     @FXML
@@ -198,5 +201,6 @@ public class CompanyController {
 
     @FXML
     void updateAction(ActionEvent event) {
+
     }
 }
