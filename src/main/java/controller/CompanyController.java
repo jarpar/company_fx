@@ -194,6 +194,24 @@ public class CompanyController {
                     .filter(product -> product.getCategory().equals(combo_category.getValue()))
                     .collect(Collectors.toList()));
         }
+        // filtrowanie po ilości
+        ObservableList<Product> productsToFilter = FXCollections.observableArrayList();
+        if (cb_less5.isSelected()) {
+            productsToFilter.addAll(FXCollections.observableArrayList(filteredProducts.stream()
+                    .filter(product -> product.getQuantity() < 5)
+                    .collect(Collectors.toList())));
+        }
+        if (cb_medium.isSelected()) {
+            productsToFilter.addAll(FXCollections.observableArrayList(filteredProducts.stream()
+                    .filter(product -> product.getQuantity() >= 5 && product.getQuantity() <= 10)
+                    .collect(Collectors.toList())));
+        }
+        if (cb_more10.isSelected()) {
+            productsToFilter.addAll(FXCollections.observableArrayList(filteredProducts.stream()
+                    .filter(product -> product.getQuantity() > 10)
+                    .collect(Collectors.toList())));
+        }
+
         tbl_products.setItems(filteredProducts);
         // cyszczenie pól do domyślnych
         tf_search.clear();
