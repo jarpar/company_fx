@@ -189,7 +189,9 @@ public class CompanyController {
                 products.stream()
                         .filter(product -> product.getName().toLowerCase().contains(tf_search.getText().toLowerCase()))
                         .collect(Collectors.toList()));
-
+        filteredProducts = FXCollections.observableArrayList(filteredProducts.stream()
+                .filter(product -> product.getCategory().equals(combo_category.getValue()))
+                .collect(Collectors.toList()));
         tbl_products.setItems(filteredProducts);
     }
 
