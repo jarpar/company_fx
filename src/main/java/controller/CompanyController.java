@@ -245,7 +245,57 @@ public class CompanyController {
     }
 
     @FXML
-    void updateAction(ActionEvent event) {
+    void updateAction(ActionEvent event) throws IOException {
+        // zaznaczone w tabelce
+        Product product = tbl_products.getSelectionModel().getSelectedItem();
+        //toDo
+        Dialog<Product> dialog = new Dialog<>();
+        dialog.setTitle("Edytuj produkt");
+        dialog.setHeaderText("Edytuj produkt");
+        // ustawienie kontrolek
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20, 150, 10, 10));
 
+        TextField tf_productName = new TextField();
+
+        tf_productName.setPromptText("nazwa");
+        ComboBox<Category> combo_productCategory = new ComboBox<>();
+        combo_productCategory.setItems(FXCollections.observableArrayList(Category.values()));
+        combo_productCategory.setPromptText("kategoria");
+        TextField tf_productPrice = new TextField();
+        tf_productPrice.setPromptText("cena");
+        TextField tf_productQuantity = new TextField();
+        tf_productQuantity.setPromptText("ilość");
+
+        grid.add(tf_productName, 0, 0);
+        grid.add(combo_productCategory, 0, 1);
+        grid.add(tf_productPrice, 0, 2);
+        grid.add(tf_productQuantity, 0, 3);
+
+        dialog.getDialogPane().setContent(grid);
+        // przyciski
+        ButtonType btn_ok = new ButtonType("Dodaj", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(btn_ok);
+
+        Optional<Product> productOpt = dialog.showAndWait();
+        if (productOpt.isPresent()) {
+            if (!tf_productPrice.getText().matches("[0-9]+\\.{0,1}[0-9]{0,2}") ||
+                    !tf_productQuantity.getText().matches("[0-9]+")) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Błąd danych");
+                alert.setHeaderText("Błąd danych. Produkt nie został dodany!");
+                alert.showAndWait();
+            } else {
+                product.setName(tf_productName.getText());
+                product.setCategory(combo_productCategory.getValue());
+                product.setPrice(Double.valueOf(tf_productPrice.getText()));
+                product.setQuantity(Integer.valueOf(tf_productQuantity.getText()));
+                saveToFile();
+                setProductsIntoTable();
+            }
+        }
+        //end toDo
     }
 }
