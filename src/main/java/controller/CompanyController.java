@@ -23,6 +23,7 @@ import java.util.Arrays;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class CompanyController {
     private String path = Paths.get("").toAbsolutePath().toString() +
@@ -184,7 +185,12 @@ public class CompanyController {
 
     @FXML
     void filterAction(ActionEvent event) {
+        ObservableList<Product> filteredProducts = FXCollections.observableArrayList(
+                products.stream()
+                        .filter(product -> product.getName().toLowerCase().contains(tf_search.getText().toLowerCase()))
+                        .collect(Collectors.toList()));
 
+        tbl_products.setItems(filteredProducts);
     }
 
     @FXML
